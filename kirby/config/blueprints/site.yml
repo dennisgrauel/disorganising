@@ -1,7 +1,14 @@
 name: Site
 title: Site
 sections:
-  pages:
-    headline: Pages
-    type: pages
-
+    fields:
+        headline: details
+        type: fields
+        fields:
+            header:
+                type: text
+            acknowledgement:
+                type: textarea
+    pages:
+        headline: Pages
+        type: pages
