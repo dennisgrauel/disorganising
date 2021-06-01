@@ -1,14 +1,17 @@
 name: Site
 title: Site
-sections:
-    fields:
-        headline: details
-        type: fields
-        fields:
-            header:
-                type: text
-            acknowledgement:
-                type: textarea
-    pages:
+options:
+  changeTitle: true
+
+tabs:
+  pages:
+    sections:
+      pages:
         headline: Pages
         type: pages
+  overview:
+    sections:
+      details:
+        headline: Details
+        type: fields
+          fields:
