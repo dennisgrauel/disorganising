@@ -1,0 +1,12 @@
+name: Home
+title: Home
+
+sections:
+  overview:
+    headline: Overview
+    type: fields
+    fields:
+      header:
+        type: text
+      acknowledgement:
+        type: textarea
