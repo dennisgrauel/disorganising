@@ -1,7 +1,5 @@
 name: Site
 title: Site
-options:
-  changeTitle: true
 
 tabs:
   pages:
