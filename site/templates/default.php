@@ -20,6 +20,20 @@
 
       <?php foreach ($works as $work): ?>
 
+      <?php if ($work->intendedTemplate() == 'dinner') : ?>
+
+      <a href="#" class="dinner">
+        <div>
+          <h1>disorganising dinners</h1>
+          <h4><?= $work->number() ?></h4>
+
+          <?= $work->text()->toBlocks() ?>
+
+        </div>
+      </a>
+
+      <?php else : ?>
+
       <a href="#" class="work">
         <div>
           <h4><?= $work->classification() ?></h4>
@@ -29,17 +43,35 @@
           <?php if ($work->preview()->toBool() === true) : ?>
           <p class="excerpt"><?= $work->excerpt() ?></p>
 
-        <?php else : ?>
+          <?php else : ?>
 
           <figure>
             <img src="<?= $work->image()->url() ?>" alt="">
           </figure>
 
-        <?php endif; ?>
-
+          <?php endif; ?>
 
         </div>
       </a>
+
+      <?php endif; ?>
+
+      <?php endforeach ?>
+
+      <!-- CONTENT PANES -->
+
+      <?php foreach ($site->children()->listed()->filterBy('intendedTemplate', 'modular') as $work) : ?>
+
+      <div class="content-bg">
+
+      </div>
+      <div class="content-pane">
+        <h5>(CLOSE)</h5>
+        <h1 data-font='<?= $work->font() ?>'><?= $work->title() ?></h2>
+        <h3><?= $work->author() ?></h3>
+        <?= $work->text()->toBlocks() ?>
+
+      </div>
 
       <?php endforeach ?>
 
