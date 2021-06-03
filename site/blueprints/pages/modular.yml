@@ -31,6 +31,12 @@ columns:
       details:
         type: fields
         fields:
+          font:
+            label: Heading Font
+            type: radio
+            options:
+              clack: Clack
+              nimbus-sans-condensed: Nimbus Sans
           classification:
             type: multiselect
             options:
