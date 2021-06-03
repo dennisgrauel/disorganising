@@ -1,0 +1,14 @@
+name: Dinner
+title: Dinner
+
+columns:
+  left:
+    width: 1/2
+      fields:
+        number:
+          type: number
+        text:
+          type: blocks
+
+  right:
+    
