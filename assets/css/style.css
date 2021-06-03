@@ -45,7 +45,7 @@
 
 @font-face {
     font-family: 'Gothic No. 13';
-    src:url('../fonts/gothic-no-13/Gothic No.13.woff2') format('woff2');
+    src:url('../fonts/gothic-no-13/Gothic No.13.eot') format('embedded-opentype');
     font-weight: normal;
     font-style: normal;
 }
@@ -78,16 +78,81 @@ footer {
   position: fixed;
   font-family: 'Quadrant Slab Duo', monospace;
   font-size: 1rem;
+  margin-right: 1rem;
 }
 
 header {
-  top: 10px;
-  left: 10px;
+  top: 1rem;
+  left: 1rem;
 }
 
 footer {
-  bottom: 10px;
-  left: 10px;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+/* Category Filters */
+
+.filter-container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 1.8rem;
+  width: 10rem;
+}
+
+.filter-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.5rem;
+  width: 1.5rem;
+  border: 0.2rem solid black;
+  background-color: inherit;
+}
+
+.filter-container input:checked ~ .checkmark {
+  background-color: black;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.filter-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* .filter-container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+} */
+
+/* ----- */
+
+.acknowledgement {
+  margin-top: 1rem;
 }
 
 .nimbus {
@@ -101,7 +166,9 @@ footer {
   margin-top: 4rem;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 2rem;
   max-width: 65%;
+  position: relative;
 }
 
 .about p {
@@ -113,4 +180,79 @@ a {
   text-decoration: none;
   font-size: inherit;
   color: inherit;
+  display: block;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.work {
+  width: calc(100% / 12 * 3);
+  margin-left: 1rem;
+}
+
+.work:nth-of-type(4n+1) {
+  margin-left: 8.3vw;
+}
+
+.work:nth-of-type(4n+3) {
+  margin-left: 16.6vw;
+}
+
+figure {
+  width: 14vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.2rem;
+  /* padding: 10%; */
+  overflow: hidden;
+}
+
+img {
+  object-fit: contain;
+  width: 100%;
+}
+
+h1 {
+
+}
+
+h2, h3 {
+  font-size: 1.429rem;
+  font-family: 'Quadrant Text', monospace;
+  font-weight: normal;
+  line-height: 1.7rem;
+  margin-bottom: 0.4rem;
+}
+
+h2 {
+  text-align: center;
+}
+
+h3 {
+  font-style: italic;
+}
+
+h4 {
+  font-size: 1.429rem;
+  font-family: 'Gothic No. 13', nimbus-sans-condensed, serif;
+  /* font-weight: 700;
+  font-style: normal; */
+  line-height: 1.7rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+label h4 {
+  margin-bottom: 0px;
+}
+
+p {
+  font-size: inherit;
+}
+
+.excerpt {
+  margin-top: 1.2rem;
 }
