@@ -1,18 +1,34 @@
 title: Site
 
-tabs:
+columns:
 
-  pages:
-    preset: pages
-    unlisted: true
+  left:
+    width: 1/2
+    sections:
+      fields:
+        fields:
+          headline:
+            type: text
+          acknowledgement:
+            type: textarea
+          about:
+            type: blocks
+            fieldsets:
+              - text
 
-  details:
-    fields:
-      headline:
-        type: text
-      acknowledgement:
-        type: textarea
-      about:
-        type: blocks
-        fieldsets:
-          - text
+
+  right:
+    width: 1/2
+    sections:
+      drafts:
+        type: pages
+        headline: Drafts
+        status: draft
+      unlisted:
+        type: pages
+        headline: Unlisted
+        status: unlisted
+      published:
+        type: pages
+        headline: Published pages
+        status: listed
