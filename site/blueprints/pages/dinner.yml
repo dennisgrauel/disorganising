@@ -4,11 +4,37 @@ title: Dinner
 columns:
   left:
     width: 1/2
-      fields:
-        number:
-          type: number
-        text:
-          type: blocks
+    fields:
+      number:
+        type: number
+      text:
+        type: blocks
+        fieldsets:
+          - text
+          - quote
+          - heading
+          - image
+          - gallery
+          - video
+          - list
 
   right:
-    
+    width: 1/2
+    sections:
+      reference:
+        headline: Style Guide
+        type: info
+        text: |
+          Text blocks – justified text
+          Quote blocks – centre aligned text
+          H2 heading – centre aligned heading (to pair with centre aligned text)
+          H3 heading – left aligned heading (to pair with justified text)
+      images:
+        type: files
+        layout: cards
+        width: 1/2
+        image:
+          ratio: 1/1
+          cover: true
+        template: image
+        info: "{{ file.caption }}"
