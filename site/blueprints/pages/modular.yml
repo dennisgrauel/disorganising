@@ -3,7 +3,7 @@ title: Modular
 
 columns:
   left:
-    width: 2/3
+    width: 1/2
     sections:
       content:
         type: fields
@@ -18,13 +18,15 @@ columns:
             fieldsets:
               - heading
               - text
+              - table
               - list
               - quote
               - image
+              - gallery
               - video
-
+              - markdown
   right:
-    width: 1/3
+    width: 1/2
     sections:
       details:
         type: fields
@@ -35,3 +37,28 @@ columns:
               proposal: Proposal
               interview: Interview
               essay: Essay
+          preview:
+            label: Preview Type
+            type: toggle
+            text:
+              -
+                Thumbnail
+              –
+                Text
+          excerpt:
+            label: Preview Text Excerpt
+            type: textarea
+            size: small
+      thumbnail:
+        type: info
+        text: |
+          The first image will be the thumbnail image
+      images:
+        type: files
+        layout: cards
+        width: 1/2
+        image:
+          ratio: 1/1
+          cover: true
+        template: image
+        info: "{{ file.caption }}"
