@@ -1,0 +1,12 @@
+name: Table
+icon: menu
+preview: table
+
+fields:
+  rows:
+    type: structure
+    columns:
+      voice:
+        width: 1/4
+        type: text
+      
