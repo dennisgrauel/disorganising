@@ -55,10 +55,14 @@ columns:
             label: Preview Text Excerpt
             type: textarea
             size: small
-      thumbnail:
+      styleguide:
         type: info
         text: |
-          The first image will be the thumbnail image
+          If *Preview Type* is set to **Thumbnail**, the first image will be used as the thumbnail image
+
+          For intro paragraphs, use a **H6 heading block**.
+          To insert a text break, create a **markdown block with 3 hyphens**.
+          For interview transcripts, use a **table block** to input each paragraph with its corresponding voice. For multiple paragraphs attributed to a single voice, only label the first.
       images:
         type: files
         layout: cards
