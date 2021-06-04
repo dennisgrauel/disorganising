@@ -1,3 +1,7 @@
+:root {
+  --bg: #FFFFE7;
+}
+
 /* Fonts */
 
 /* Quadrant */
@@ -66,6 +70,7 @@
     padding: 0;
     box-sizing: border-box;
     font-size: 14px;
+    font-smooth: antialiased;
 }
 
 body {
@@ -188,6 +193,14 @@ a:hover {
 }
 
 main {
+  /* display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 12rem; */
+}
+
+/* FEED */
+
+#feed {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 12rem;
@@ -279,6 +292,7 @@ p {
 }
 
 .dinner h1 {
+  font-family: 'Clack', serif;
   font-size: 1.71rem;
   font-weight: normal;
   text-align: center;
@@ -319,28 +333,45 @@ p {
 
 /* CONTENT PANE */
 
-.content-bg {
-  position:
+.content-pane.active {
+  top: 0;
 }
 
-.content-pane {
-  position: fixed;
-  top: 0;
-  right: 0;
+.content {
   width: calc(100% / 12 * 10);
   background: #ffffe7;
   height: 100vh;
   overflow-y: scroll;
   z-index: 99;
   padding: 1rem calc(100vw / 12) 12rem calc(100vw / 12 * 2);
+  right: 0;
+  float: right;
+}
+
+.content-bg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.content-pane {
+  position: fixed;
+  top: 100vh;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+  transition: top 0.5s ease;
+}
+
+.content-pane h5 {
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .content-pane h1 {
   font-size: 4.5rem;
   margin-bottom: 2rem;
-  word-break: break-all;
-  hyphens: auto;
-  -webkit-hyphens: auto;
 }
 
 [data-font="clack"] {
@@ -362,15 +393,32 @@ p {
   line-height: 1.3rem;
 }
 
+.content-pane blockquote {
+  margin: 1rem 3rem 1rem 3rem;
+}
+
+blockquote footer {
+  position: relative;
+  left: inherit;
+  bottom: inherit;
+  text-align: right;
+  margin: 1rem 3rem 1rem 3rem;
+}
+
+blockquote footer::before {
+  content: "—";
+}
+
+/* AUTHOR NAME(S) */
 .content-pane h3 {
   font-size: 2rem;
   margin-bottom: 2rem;
-  text-align: center;
+  text-align: right;
 }
 
 .content-pane p {
   font-size: 1.3rem;
-  line-height: 1.7rem;
+  line-height: 1.8rem;
 }
 
 .content-pane p+p {
@@ -382,6 +430,36 @@ p {
   text-transform: uppercase;
 }
 
+.content-pane h6 {
+  font-family: 'Quadrant Slab Duo', monospace;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  font-weight: normal;
+  margin: 1rem 0 2rem 0;
+}
+
+/* INTERVIEWS */
+
+table {
+  font-family: 'Quadrant Slab Duo', monospace;
+  font-size: 1rem;
+  line-height: 1.4rem;
+  /* margin-left: calc(100vw / 12); */
+}
+
+td {
+  vertical-align: baseline;
+  padding-bottom: 1rem;
+}
+
+td:first-child {
+  width: calc(100vw / 12 * 2);
+}
+
+td:last-child {
+  width: calc(100vw / 12 * 5);
+}
+
 em {
   font-size: inherit;
   font-style: italic;
@@ -390,10 +468,25 @@ em {
 h5 {
   font-family: nimbus-sans-condensed, sans-serif;
   font-weight: 700;
-  position: fixed;
+  position: absolute;
   top: 1rem;
   right: 1.5rem;
 }
+
+hr {
+  border: none;
+  margin: 2.7rem 0 2rem 0;
+  text-align: center;
+
+}
+
+hr::after {
+  content: '*';
+  font-family: 'Quadrant Text', monospace;
+  font-size: 2rem;
+  font-weight: normal;
+}
+
 
 /* IMAGE GALLERY */
 
@@ -437,8 +530,8 @@ figcaption {
 /* SELECTION */
 
 ::selection {
-  background: black;
-  color: white;
+  background: crimson;
+  color: var(--bg);
 }
 
 /* BREAK POINTS */
@@ -471,6 +564,9 @@ figcaption {
 }
 
 @media only screen and (max-width: 720px) {
+  * {
+    font-size: 18px;
+  }
   .work {
     width: calc(100% / 12 * 10);
   }
@@ -488,7 +584,11 @@ figcaption {
   .captions {
     position: relative;
     transform: none;
-    /* display: grid;
-    grid-template-columns: 30% 30% 30%; */
+  }
+  .captions figcaption {
+    width: 100%;
+  }
+  td:first-child {
+    width: 30%;
   }
 }
