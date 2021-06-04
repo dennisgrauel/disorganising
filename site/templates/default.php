@@ -16,68 +16,78 @@
 
     <main>
 
-      <?php $works = $site->children()->listed() ?>
+      <!-- FEED -->
 
-      <?php foreach ($works as $work): ?>
+      <div id="feed">
 
-      <?php if ($work->intendedTemplate() == 'dinner') : ?>
+        <?php $works = $site->children()->listed() ?>
 
-      <a href="#" class="dinner">
-        <div>
-          <h1>disorganising dinners</h1>
-          <h4><?= $work->number() ?></h4>
+        <?php foreach ($works as $work): ?>
 
-          <?= $work->text()->toBlocks() ?>
+        <?php if ($work->intendedTemplate() == 'dinner') : ?>
 
-        </div>
-      </a>
+        <a href="#" class="dinner">
+          <div>
+            <h1>disorganising dinners</h1>
+            <h4><?= $work->number() ?></h4>
 
-      <?php else : ?>
+            <?= $work->text()->toBlocks() ?>
 
-      <a href="#" class="work">
-        <div>
-          <h4><?= $work->classification() ?></h4>
-          <h2><?= $work->title() ?></h2>
-          <h3><?= $work->author() ?></h3>
+          </div>
+        </a>
 
-          <?php if ($work->preview()->toBool() === true) : ?>
-          <p class="excerpt"><?= $work->excerpt() ?></p>
+        <?php else : ?>
 
-          <?php else : ?>
+        <a href="#" class="work" onclick="openPane(<?= $work->num() ?>)">
+          <div>
+            <h4><?= $work->classification() ?></h4>
+            <h2><?= $work->title() ?></h2>
+            <h3><?= $work->author() ?></h3>
 
-          <figure>
-            <img src="<?= $work->image()->url() ?>" alt="">
-          </figure>
+            <?php if ($work->preview()->toBool() === true) : ?>
+            <p class="excerpt"><?= $work->excerpt() ?></p>
 
-          <?php endif; ?>
+            <?php else : ?>
 
-        </div>
-      </a>
+            <figure>
+              <img src="<?= $work->image()->url() ?>" alt="">
+            </figure>
 
-      <?php endif; ?>
+            <?php endif; ?>
 
-      <?php endforeach ?>
+          </div>
+        </a>
+
+        <?php endif; ?>
+
+        <?php endforeach ?>
+
+      </div>
+
+
 
       <!-- CONTENT PANES -->
 
       <?php foreach ($site->children()->listed()->filterBy('intendedTemplate', 'modular') as $work) : ?>
 
-      <div class="content-bg">
 
-      </div>
-      <div class="content-pane">
-        <h5>(CLOSE)</h5>
-        <h1 data-font='<?= $work->font() ?>'><?= $work->title() ?></h2>
-        <h3><?= $work->author() ?></h3>
-        <?= $work->text()->toBlocks() ?>
+      <div class="content-pane" id="<?= $work->num() ?>">
+
+        <div class="content-bg">
+        </div>
+
+        <div class="content">
+          <a href="#" onclick="closePane(<?= $work->num() ?>)"><h5>(CLOSE)</h5></a>
+          <h1 data-font='<?= $work->font() ?>'><?= $work->title() ?></h2>
+          <h3><?= $work->author() ?></h3>
+          <?= $work->text()->toBlocks() ?>
+        </div>
 
       </div>
 
       <?php endforeach ?>
 
     </main>
-
-
 
     <footer>
 
@@ -104,6 +114,8 @@
       </div>
 
     </footer>
+
+    <?= js('assets/js/panes.js') ?>
 
   </body>
 </html>
