@@ -129,7 +129,7 @@ footer {
 }
 
 .filter-container input:checked ~ .checkmark {
-  background-color: black;
+  /* background-color: black; */
 }
 
 .checkmark:after {
@@ -142,29 +142,19 @@ footer {
   display: block;
 }
 
-/* .filter-container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-} */
-
-/* ----- */
+.filter-container .checkmark:after {
+  left: 0.35rem;
+  top: 0.35rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: black;
+}
 
 .acknowledgement {
   margin-top: 1rem;
 }
 
-.nimbus {
-  font-family: nimbus-sans-condensed, sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
+/* ------- */
 
 .about {
   text-align: center;
@@ -176,16 +166,58 @@ footer {
   position: relative;
 }
 
-.about p {
+.about p,
+#about-pane p {
   font-size: 1.3rem;
   line-height: 1.6rem;
+}
+
+/* ABOUT PANE */
+
+#about-bg {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  color: yellow;
+  opacity: 1;
+}
+
+#about-pane.active {
+  right: 0;
+}
+
+#about-pane {
+  width: calc(100vw / 12 * 5);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: -50%;
+  padding: 1rem calc(100vw / 12) 12rem 1rem;
+  background-color: white;
+  border-left: 2px solid whitesmoke;
+  z-index: 99;
+  transition: right ease 0.4s;
+}
+
+#about-pane p+p {
+  text-indent: 4rem;
+}
+
+#about-pane a {
+  display: inline;
+}
+
+#about-pane h5 {
+  font-family: 'Quadrant Slab Duo', monospace;
+  font-weight: normal;
+  text-transform: lowercase;
 }
 
 a {
   text-decoration: none;
   font-size: inherit;
   color: inherit;
-  display: block;
+  display: inline-block;
 }
 
 a:hover {
@@ -372,9 +404,26 @@ p {
 .content-pane h1 {
   font-size: 4.5rem;
   margin-bottom: 2rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
-[data-font="clack"] {
+.subtitle {
+  font-family: 'Quadrant Text', monospace;
+  font-weight: normal;
+  text-transform: none;
+  font-size: 2rem;
+  line-height: 2.4rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+h1[data-font="clack"] {
   font-family: 'Clack', cursive;
   font-weight: normal;
 }
@@ -384,6 +433,12 @@ p {
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   line-height: 5rem;
+}
+
+.published {
+  font-family: 'Quadrant Slab Duo', monospace;
+  /* transform: translateX(calc(-100vw / 12 * 2 + 2rem)); */
+  text-transform: uppercase;
 }
 
 .content-pane blockquote:first-of-type {
@@ -410,8 +465,9 @@ blockquote footer::before {
 }
 
 /* AUTHOR NAME(S) */
-.content-pane h3 {
+.author {
   font-size: 2rem;
+  line-height: 2.4rem;
   margin-bottom: 2rem;
   text-align: right;
 }
@@ -567,13 +623,21 @@ figcaption {
   * {
     font-size: 18px;
   }
+  .about {
+    padding: 2rem;
+    max-width: none;
+  }
+  #about-pane {
+    width: calc(100vw / 12 * 10);
+    padding-right: calc(100vw / 12 * 2);
+  }
   .work {
     width: calc(100% / 12 * 10);
   }
   .dinner {
     margin-left: calc(100% / 12 * 2)
   }
-  .content-pane {
+  .content {
     width: 100%;
     padding: 1rem 1rem 12rem 1rem;
   }
