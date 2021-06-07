@@ -13,6 +13,11 @@ columns:
           author:
             label: Author(s)
             type: text
+          published:
+            label: Date Published
+            type: date
+            display: DD MMM YYYY
+            default: today
           text:
             type: blocks
             fieldsets:
@@ -38,7 +43,7 @@ columns:
               clack: Clack
               nimbus-sans-condensed: Nimbus Sans
           classification:
-            type: multiselect
+            type: tags
             options:
               proposal: Proposal
               interview: Interview
