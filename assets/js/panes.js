@@ -1,9 +1,13 @@
-function openPane(i) {
+function openPane(i, u) {
   document.getElementById([i]).classList.add('active');
-  console.log("open pane")
+  window.history.pushState("object", "title", [u]);
+  console.log("open pane");
+  console.log([u]);
+
 }
 
-function closePane(i) {
+function closePane(i, u) {
   document.getElementById([i]).classList.remove('active');
-  console.log("close pane")
+  window.history.pushState("object", "title", [u]);
+  console.log("close pane");
 }
