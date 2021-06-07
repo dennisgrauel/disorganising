@@ -11,7 +11,15 @@
     <header><?= $site->heading() ?></header>
     <div class="about">
       <?= $site->about()->toBlocks()->limit(1) ?>
-      <p><a href="#">[more …]</a></p>
+      <p><a href="#" onclick="openPane('about-pane')">[more …]</a></p>
+    </div>
+
+    <div id="about-pane">
+
+      <div id="about-bg"></div>
+
+      <a href="#" onclick="closePane('about-pane', '<?= $site->url() ?>')"><h5>(CLOSE)</h5></a>
+      <?= $site->about()->toBlocks() ?>
     </div>
 
     <main>
@@ -38,7 +46,7 @@
 
         <?php else : ?>
 
-        <a href="#" class="work" onclick="openPane(<?= $work->num() ?>)">
+        <a href="#" class="work" onclick="openPane(<?= $work->num() ?>, '<?= $work->url() ?>')">
           <div>
             <h4><?= $work->classification() ?></h4>
             <h2><?= $work->title() ?></h2>
@@ -77,9 +85,13 @@
         </div>
 
         <div class="content">
-          <a href="#" onclick="closePane(<?= $work->num() ?>)"><h5>(CLOSE)</h5></a>
+          <a href="#" onclick="closePane(<?= $work->num() ?>, '<?= $site->url() ?>')"><h5>(CLOSE)</h5></a>
           <h1 data-font='<?= $work->font() ?>'><?= $work->title() ?></h2>
-          <h3><?= $work->author() ?></h3>
+          <div class="published">
+            <?= $work->published()->toDate('j F Y') ?>
+          </div>
+          <h3 class="author"><?= $work->author() ?></h3>
+          <h4 class="subtitle"><?= $work->subtitle() ?></h4>
           <?= $work->text()->toBlocks() ?>
         </div>
 
@@ -89,24 +101,24 @@
 
     </main>
 
+    <!-- FOOTER & TAG FILTERS -->
+
     <footer>
 
       <div>
+
+        <?php $tags = $site->children->listed()->pluck('classification', ',', true);
+
+        foreach ($tags as $tag) :?>
+
         <label class="filter-container">
-          <h4>Proposal</h4>
-          <input type="checkbox">
+          <h4><?= $tag ?></h4>
+          <input type="checkbox" checked>
           <span class="checkmark"></span>
         </label>
-        <label class="filter-container">
-          <h4>Essay</h4>
-          <input type="checkbox">
-          <span class="checkmark"></span>
-        </label>
-        <label class="filter-container">
-          <h4>Interview</h4>
-          <input type="checkbox">
-          <span class="checkmark"></span>
-        </label>
+
+        <?php endforeach ?>
+
       </div>
 
       <div class="acknowledgement">
