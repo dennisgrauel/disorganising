@@ -8,7 +8,10 @@ columns:
       fields:
         fields:
           headline:
-            type: text
+            label: Headline Variations
+            type: blocks
+            fieldsets:
+              - text
           acknowledgement:
             type: textarea
           about:
