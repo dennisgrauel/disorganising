@@ -18,6 +18,10 @@ columns:
             type: date
             display: DD MMM YYYY
             default: today
+          audio:
+            type: blocks
+            fieldsets:
+              - markdown
           text:
             type: blocks
             fieldsets:
@@ -44,10 +48,6 @@ columns:
               nimbus-sans-condensed: Nimbus Sans
           classification:
             type: tags
-            options:
-              proposal: Proposal
-              interview: Interview
-              essay: Essay
           preview:
             label: Preview Type
             type: toggle
@@ -77,3 +77,6 @@ columns:
           cover: true
         template: image
         info: "{{ file.caption }}"
+      audio:
+        type: files
+        template: audio
