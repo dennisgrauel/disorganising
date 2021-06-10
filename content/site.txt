@@ -2,7 +2,7 @@ Title: Disorganising
 
 ----
 
-Headline: West Space, Bus Projects and Liquid Architecture are disorganising.
+Headline: [{"content":{"text":"<p>Liquid Architecture, West Space and Bus Projects are disorganising.<\/p>"},"id":"95552255-8cdd-497f-8532-6528cb2b9aa1","isHidden":false,"type":"text"},{"content":{"text":"<p>Liquid Architecture, Bus Projects and West Space are disorganising.<\/p>"},"id":"de952575-24d3-4f48-87d7-3fda753b5d35","isHidden":false,"type":"text"},{"content":{"text":"<p>Bus Projects, West Space and Liquid Architecture are disorganising.<\/p>"},"id":"e16ae8be-7309-438b-9fee-29fe50f9ec52","isHidden":false,"type":"text"},{"content":{"text":"<p>Bus Projects, West Space and Liquid Architecture are disorganising.<\/p>"},"id":"001f9ab1-e95d-410a-86b2-c691af3cb3ca","isHidden":false,"type":"text"},{"content":{"text":"<p>West Space, Liquid Architecture and Bus Projects are disorganising.<\/p>"},"id":"0f6437a0-6aee-480d-9d8d-961e81007dcd","isHidden":false,"type":"text"},{"content":{"text":"<p>West Space, Bus Projects and Liquid Architecture are disorganising.<\/p>"},"id":"f01974ec-4ece-4d0c-938f-42bf0be6f00c","isHidden":false,"type":"text"},{"content":{"text":"<p>Liquid Space, West Projects and Bus Architecture are disorganising.<\/p>"},"id":"95a6b443-19eb-4ae1-8f30-b8933a56689b","isHidden":false,"type":"text"}]
 
 ----
 
