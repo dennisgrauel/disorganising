@@ -252,8 +252,15 @@ a {
   display: inline-block;
 }
 
-a:hover {
+a:hover,
+a:focus {
   color: #d00000;
+}
+
+a:focus {
+  /* background: whitesmoke; */
+  outline: 1px dotted #d00000;
+  outline-offset: -2px;
 }
 
 main {
