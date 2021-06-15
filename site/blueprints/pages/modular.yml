@@ -80,3 +80,6 @@ columns:
       audio:
         type: files
         template: audio
+      embed:
+        label: Embed
+        type: embed
