@@ -110,8 +110,12 @@ footer {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  padding-left: 1.8rem;
-  width: 10rem;
+  padding-left: 1.6rem;
+  width: fit-content;
+}
+
+.filter-container > h4 {
+  padding: 0 .2rem 0 .2rem;
 }
 
 .filter-container input {
@@ -166,6 +170,15 @@ footer {
   color: grey;
 }
 
+input:focus + h4 {
+  color: #d00000;
+  outline: #d00000 solid 1px;
+}
+
+input:focus + .checkmark {
+  background-color: #d00000;
+}
+
 .hide {
   /* display: none; */
   /* max-height: 0; */
@@ -213,10 +226,12 @@ footer {
   position: absolute;
   color: yellow;
   opacity: 1;
+  visibility: hidden;
 }
 
 #about-pane.active {
   right: 0;
+  visibility: visible;
 }
 
 #about-pane {
@@ -228,7 +243,8 @@ footer {
   padding: 1rem calc(100vw / 12) 12rem 5rem;
   background: linear-gradient(to left, rgba(240,240,240,1) 90%, rgba(240,240,240,0) 100%);
   z-index: 99;
-  transition: right ease 0.4s;
+  transition: visibility linear 0.4s, right ease 0.4s;
+  visibility: hidden;
 }
 
 #about-pane p+p {
@@ -258,12 +274,19 @@ a:focus {
 }
 
 a:focus {
-  /* background: whitesmoke; */
-  outline: 1px dotted #d00000;
-  outline-offset: -2px;
+  outline: 1px solid #d00000;
 }
 
-main {
+a.work:focus,
+a.dinner:focus {
+  outline: none;
+  background: whitesmoke;
+  border-radius: 1rem;
+}
+
+
+
+nav {
   /* display: flex;
   flex-wrap: wrap;
   margin-bottom: 12rem; */
@@ -280,7 +303,7 @@ main {
 
 .work {
   width: calc(100% / 12 * 3);
-  margin-left: 1rem;
+  padding: 1rem;
   transition: ease 0.2s;
 }
 
@@ -373,7 +396,7 @@ p {
 .dinner {
   width: 100%;
   margin-left: 66.6%;
-  margin-right: 1rem;
+  padding: 1rem;
 
 }
 
@@ -421,6 +444,7 @@ p {
 
 .content-pane.active {
   top: 0;
+  visibility: visible;
 }
 
 .content {
@@ -447,7 +471,8 @@ p {
   width: 100vw;
   height: 100vh;
   z-index: 99;
-  transition: top 0.5s ease;
+  visibility: hidden;
+  transition: visibility 0.5s linear, top 0.5s ease;
 }
 
 .content-pane h5 {
@@ -602,7 +627,7 @@ hr::after {
 
 /* AUDIO EMBEDDER */
 
-iframe {
+audio {
   display: block;
   z-index: 99;
   height: 4rem;
