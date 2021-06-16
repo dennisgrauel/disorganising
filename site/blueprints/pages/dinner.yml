@@ -7,6 +7,10 @@ columns:
     fields:
       number:
         type: number
+      date:
+        type: date
+        display: DD MMM YYYY
+        default: today
       text:
         type: blocks
         fieldsets:

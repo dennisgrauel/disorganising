@@ -18,7 +18,10 @@ columns:
             type: blocks
             fieldsets:
               - text
-
+          contributors:
+            type: blocks
+            fieldsets:
+              - text
 
   right:
     width: 1/2

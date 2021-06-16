@@ -10,7 +10,9 @@
   <body onkeypress="ESCclose(event)">
 
     <header>
-      <?= $site->headline()->toBlocks()->shuffle()->limit(1) ?>
+      <a href="<?= $site->url() ?>">
+        <?= $site->headline()->toBlocks()->shuffle()->limit(1) ?>
+      </a>
     </header>
 
     <div class="about">
@@ -26,8 +28,17 @@
 
       <div id="about-bg"></div>
 
-      <a href="#" onclick="closePane('about-pane', '<?= $site->url() ?>')"><h5>(CLOSE)</h5></a>
-      <?= $site->about()->toBlocks() ?>
+      <a href="javascript:void(0)" onclick="closePane('about-pane', '<?= $site->url() ?>')"><h5>(CLOSE)</h5></a>
+
+      <div id="about-text">
+        <h2>ABOUT</h2>
+        <?= $site->about()->toBlocks() ?>
+      </div>
+      <div id="contributors">
+        <h2>CONTRIBUTORS</h2>
+        <?= $site->contributors()->toBlocks() ?>
+      </div>
+
     </div>
 
     <nav>
@@ -43,7 +54,7 @@
 
           <?php if ($work->intendedTemplate() == 'dinner') : ?>
 
-            <a href="#" class="dinner">
+            <a href="javascript:void(0)" class="dinner" onclick="openPane('<?= $work->slug() ?>', '<?= $work->url() ?>')">
               <div>
                 <h1>disorganising dinners</h1>
                 <h4><?= $work->number() ?></h4>
@@ -72,7 +83,7 @@
 
               <?php endforeach ?>
 
-              onclick="openPane(<?= $work->num() ?>, '<?= $work->url() ?>')">
+              onclick="openPane('<?= $work->slug() ?>', '<?= $work->url() ?>')">
               <div>
                 <h4><?= $work->classification() ?></h4>
                 <h2><?= $work->title() ?></h2>
@@ -108,30 +119,85 @@
 
       <?php foreach ($site->children()->listed()->filterBy('intendedTemplate', 'modular') as $work) : ?>
 
-        <div class="content-pane" id="<?= $work->num() ?>" aria-hidden="true">
+        <div class="content-pane" id="<?= $work->slug() ?>" aria-hidden="true" data-slug="<?= $work->slug() ?>">
 
           <div class="content-bg">
           </div>
 
           <div class="content">
-            <a href="#" onclick="closePane(<?= $work->num() ?>, '<?= $site->url() ?>')"><h5>(CLOSE)</h5></a>
-            <h1 data-font='<?= $work->font() ?>'><?= $work->title() ?></h2>
+            <a href="javascript:void(0)" onclick="closePane('<?= $work->slug() ?>', '<?= $site->url() ?>')"><h5>(CLOSE)</h5></a>
+            <h1 data-font='<?= $work->font() ?>'><?= $work->title() ?></h1>
             <div class="published">
               <?= $work->published()->toDate('j F Y') ?>
             </div>
             <h3 class="author"><?= $work->author() ?></h3>
-            <h4 class="subtitle"><?= $work->subtitle() ?></h4>
 
-            <?php if ($work->audio()->isNotEmpty()) : ?>
-
-              <audio src="https://www.mixcloud.com/liquid-architecture/eartheater-ritual-community-music/" controls>
-                Your browser does not support the audio element.
-              </audio>
-
+            <?php if ($work->subtitle()->isNotEmpty()) : ?>
+              <h4 class="subtitle"><?= $work->subtitle() ?></h4>
             <?php endif ?>
 
+            <?php if ($work->embed()->isNotEmpty()) : ?>
+              <?= $work->embed()->toEmbed()->code() ?>
+            <?php endif ?>
 
-            <?= $work->text()->toBlocks() ?>
+            <?php $blocks  = $work->text()->toBlocks();
+              $startAt = 1;
+              $notes   = [];
+              $applyTo = ['text', 'markdown']; ?>
+
+              <?php foreach($blocks as $block):
+                if(in_array($block->type(), $applyTo)):
+                  // we get the text with footnotes references but no bottom footnotes container
+                  $text     = $block->text()->withoutBlocksFootnotes($startAt);
+                  // instead, we get an array of the block's footnotes, and append it to our $notes array
+                  $notesArr = $block->text()->onlyBlocksFootnotes($startAt);
+                  if($notesArr !== '') {
+                    foreach($notesArr as $f) { $notes[] = $f; }
+                  }
+                  // the first note of the next block will now start at (number of current notes + 1)
+                  $startAt = count($notes) + 1;
+                  echo $text;
+                else:
+                  echo $block;
+                endif;
+                endforeach; ?>
+
+                <?php if(count($notes)): ?>
+                  <div class="notes-container">
+                    <!-- <hr> -->
+                    <?php snippet('footnotes_container', ['footnotes' => implode('', $notes)]) ?>
+                  </div>
+                <?php endif; ?>
+
+            <div class="bio">
+              <!-- <hr> -->
+              <?= $work->bio()->toBlocks() ?>
+            </div>
+
+          </div>
+
+        </div>
+
+      <?php endforeach ?>
+
+      <!-- DINNER PANES -->
+
+      <?php foreach ($site->children()->listed()->filterBy('IntendedTemplate', 'dinner') as $dinner) : ?>
+
+        <div class="content-pane" id="<?= $dinner->slug() ?>" aria-hidden="true">
+
+          <div class="content-bg">
+          </div>
+
+          <div class="content dinner-pane">
+            <a href="javascript:void(0)" onclick="closePane('<?= $dinner->slug() ?>', '<?= $dinner->url() ?>')"><h5>(CLOSE)</h5></a>
+            <h1 data-font="nimbus-sans-condensed">disorganising dinner <?= $dinner->number() ?></h1>
+            <div class="published">
+              <?= $dinner->date()->toDate('j F Y') ?>
+            </div>
+
+            <?= $dinner->text()->toBlocks() ?>
+
           </div>
 
         </div>

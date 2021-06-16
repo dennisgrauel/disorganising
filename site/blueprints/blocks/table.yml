@@ -11,6 +11,9 @@ fields:
       text:
         width: 2/3
     fields:
+      timestamp:
+        type: text
+        inline: true
       voice:
         type: text
         marks: false

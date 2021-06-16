@@ -18,10 +18,9 @@ columns:
             type: date
             display: DD MMM YYYY
             default: today
-          audio:
-            type: blocks
-            fieldsets:
-              - markdown
+          embed:
+            label: Embed
+            type: embed
           text:
             type: blocks
             fieldsets:
@@ -34,6 +33,12 @@ columns:
               - gallery
               - video
               - markdown
+          bio:
+            type: blocks
+            fieldsets:
+              - text
+              - image
+              - list
   right:
     width: 1/2
     sections:
@@ -63,11 +68,20 @@ columns:
       styleguide:
         type: info
         text: |
+          ### Homepage Preview
           If *Preview Type* is set to **Thumbnail**, the first image will be used as the thumbnail image
 
+          ### Introductory Paragraphs
           For intro paragraphs, use a **H6 heading block**.
-          To insert a text break, create a **markdown block with 3 hyphens**.
+
+          ### Text Breaks
+          To insert a text break (space with an asterisk separator), add a **markdown block** with the content `<hr>`.
+
+          ### Interview Transcripts
           For interview transcripts, use a **table block** to input each paragraph with its corresponding voice. For multiple paragraphs attributed to a single voice, only label the first.
+
+          ### Footnotes
+          Include footnotes in text using square brackets and a caret symbol. eg: `[^Footnote text goes here]`
       images:
         type: files
         layout: cards
@@ -77,9 +91,3 @@ columns:
           cover: true
         template: image
         info: "{{ file.caption }}"
-      audio:
-        type: files
-        template: audio
-      embed:
-        label: Embed
-        type: embed
