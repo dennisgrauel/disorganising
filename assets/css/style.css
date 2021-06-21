@@ -637,11 +637,8 @@ hr::after {
 /* AUDIO EMBEDDER */
 
 audio {
-  display: block;
-  z-index: 99;
-  height: 4rem;
+  margin: 3rem 0 3rem 0;
   width: 100%;
-  background: black;
 }
 
 /* IMAGE GALLERY */

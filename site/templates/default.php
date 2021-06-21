@@ -136,9 +136,12 @@
               <h4 class="subtitle"><?= $work->subtitle() ?></h4>
             <?php endif ?>
 
-            <?php if ($work->embed()->isNotEmpty()) : ?>
-              <?= $work->embed()->toEmbed()->code() ?>
+            <?php if ($work->audio()->isNotEmpty()) : ?>
+              <audio src="<?= $work->audio()->url() ?>" controls>
+                Your browser does not support audio.
+              </audio>
             <?php endif ?>
+
 
             <?php $blocks  = $work->text()->toBlocks();
               $startAt = 1;
