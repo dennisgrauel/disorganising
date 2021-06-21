@@ -42,3 +42,5 @@ columns:
           cover: true
         template: image
         info: "{{ file.caption }}"
+      audio:
+        type: files
