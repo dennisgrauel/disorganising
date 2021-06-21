@@ -44,3 +44,5 @@ columns:
         info: "{{ file.caption }}"
       audio:
         type: files
+        template: audio
+        multiple: false

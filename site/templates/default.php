@@ -137,8 +137,10 @@
             <?php endif ?>
 
             <?php if ($work->audio()->isNotEmpty()) : ?>
-              <audio src="<?= $work->audio()->url() ?>" controls>
-                Your browser does not support audio.
+              <?php $workaudio = $work->audio()->first() ?>
+              <audio controls>
+                <source src="<?= $workaudio->url() ?>" type="audio/<?= $workaudio->extension() ?>">
+                Your browser does not support the audio element.
               </audio>
             <?php endif ?>
 
@@ -187,7 +189,7 @@
 
       <?php foreach ($site->children()->listed()->filterBy('IntendedTemplate', 'dinner') as $dinner) : ?>
 
-        <div class="content-pane" id="<?= $dinner->slug() ?>" aria-hidden="true">
+        <div class="content-pane" id="<?= $dinner->slug() ?>" aria-hidden="true" data-slug="<?= $dinner->slug() ?>">
 
           <div class="content-bg">
           </div>
@@ -198,6 +200,14 @@
             <div class="published">
               <?= $dinner->date()->toDate('j F Y') ?>
             </div>
+
+            <?php if ($dinner->audio()->isNotEmpty()) : ?>
+              <?php $dinneraudio = $dinner->audio()->first() ?>
+              <audio controls>
+                <source src="<?= $dinneraudio->url() ?>" type="audio/<?= $dinneraudio->extension() ?>">
+                Your browser does not support the audio element.
+              </audio>
+            <?php endif ?>
 
             <?= $dinner->text()->toBlocks() ?>
 
