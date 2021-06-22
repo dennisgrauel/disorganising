@@ -21,6 +21,7 @@ columns:
           - gallery
           - video
           - list
+          - table
 
   right:
     width: 1/2
