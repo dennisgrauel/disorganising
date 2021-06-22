@@ -25,6 +25,16 @@ columns:
   right:
     width: 1/2
     sections:
+      homepage:
+        type: fields
+        fields:
+          preview:
+            label: Homepage Preview Text
+            type: blocks
+            fieldsets:
+              - text
+              - quote
+              - heading
       reference:
         headline: Style Guide
         type: info
