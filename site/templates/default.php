@@ -61,6 +61,10 @@
 
                 <?= $work->text()->toBlocks() ?>
 
+                <div class="date">
+                  <?= $work->date()->toDate('j F Y') ?>
+                </div>
+
                 <?php $i = 1 ?>
 
               </div>
@@ -88,6 +92,9 @@
                 <h4><?= $work->classification() ?></h4>
                 <h2><?= $work->title() ?></h2>
                 <h3><?= $work->author() ?></h3>
+                <div class="date">
+                  <?= $work->published()->toDate('j F Y') ?>
+                </div>
 
                 <?php if ($work->preview()->toBool() === true) : ?>
                   <p class="excerpt"><?= $work->excerpt() ?></p>
