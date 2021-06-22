@@ -59,7 +59,7 @@
                 <h1>disorganising dinners</h1>
                 <h4><?= $work->number() ?></h4>
 
-                <?= $work->text()->toBlocks() ?>
+                <?= $work->preview()->toBlocks() ?>
 
                 <div class="date">
                   <?= $work->date()->toDate('j F Y') ?>
@@ -98,12 +98,10 @@
 
                 <?php if ($work->preview()->toBool() === true) : ?>
                   <p class="excerpt"><?= $work->excerpt() ?></p>
-                <?php elseif ($work->image()->isNotEmpty()) : ?>
-
-                <figure>
-                  <img src="<?= $work->image()->url() ?>" alt="">
-                </figure>
-
+                <?php elseif ($work->images()->isNotEmpty()) : ?>
+                  <figure>
+                    <img src="<?= $work->images()->url() ?>" alt="">
+                  </figure>
                 <?php endif; ?>
 
                 <?php $i++ ?>
