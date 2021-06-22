@@ -90,9 +90,8 @@
                 <h3><?= $work->author() ?></h3>
 
                 <?php if ($work->preview()->toBool() === true) : ?>
-                <p class="excerpt"><?= $work->excerpt() ?></p>
-
-                <?php else : ?>
+                  <p class="excerpt"><?= $work->excerpt() ?></p>
+                <?php elseif ($work->image()->isNotEmpty()) : ?>
 
                 <figure>
                   <img src="<?= $work->image()->url() ?>" alt="">
