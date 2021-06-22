@@ -20,6 +20,6 @@ columns:
         type: radio
         options:
           - colour
-          - black & white
+          - bw
           - sepia
-          - red toned
+          - red

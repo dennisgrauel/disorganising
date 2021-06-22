@@ -6,7 +6,7 @@
     <?php foreach ($block->images()->toFiles() as $image): ?>
 
       <figure>
-        <?= $image ?>
+        <img src="<?= $image->url() ?>" alt="<?= $image->alt() ?>">
         <figcaption><?= sprintf("%02d", $i) ?>.</figcaption>
       </figure>
 

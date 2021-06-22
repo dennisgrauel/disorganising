@@ -78,6 +78,10 @@
 
               index-<?= $i ?>
 
+              <?php else : ?>
+
+              index-wrap
+
               <?php endif ?>
               "
 
@@ -100,7 +104,9 @@
                   <p class="excerpt"><?= $work->excerpt() ?></p>
                 <?php elseif ($work->images()->isNotEmpty()) : ?>
                   <figure>
-                    <img src="<?= $work->images()->url() ?>" alt="">
+                    <div class="img-wrapper" data-treatment="<?= $work->images()->first()->treatment() ?>">
+                      <img src="<?= $work->images()->first()->url() ?>" alt="" data-treatment="<?= $work->images()->first()->treatment() ?>">
+                    </div>
                   </figure>
                 <?php endif; ?>
 

@@ -333,6 +333,10 @@ nav {
   margin-left: 16.6vw;
 }
 
+.index-wrap {
+  margin-right: 20vw;
+}
+
 .work, .dinner {
   margin-bottom: 3rem;
   border: 2px solid rgba(208,0,0,0);
@@ -354,6 +358,40 @@ figure {
 img {
   object-fit: contain;
   width: 100%;
+  display: block;
+}
+
+/* IMAGE TREATMENTS */
+
+.img-wrapper[data-treatment="red"] {
+  background: var(--red);
+  mix-blend-mode: multiply;
+}
+
+.img-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--red);
+  mix-blend-mode: screen;
+}
+
+img[data-treatment="red"] {
+  filter: grayscale(100%);
+}
+
+[data-treatment="red"] {
+  /* filter: grayscale(100%); */
+  mix-blend-mode: screen;
+  -webkit-mix-blend-mode: screen;
+}
+[data-treatment="bw"] {
+  filter: grayscale(100%);
+}
+[data-treatment="sepia"] {
+  filter: sepia(100%);
 }
 
 h2, h3 {
@@ -648,6 +686,7 @@ figcaption {
   font-size: 0.85rem;
   line-height: 1rem;
   text-align: center;
+  margin-top: 0.8rem;
 }
 
 .gallery {
@@ -819,6 +858,9 @@ sup:focus {
   }
   .work {
     width: calc(100% / 12 * 10);
+  }
+  .index-wrap {
+    margin-right: ;
   }
   .dinner {
     margin-left: calc(100% / 12 * 2)
