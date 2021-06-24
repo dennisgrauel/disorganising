@@ -7,6 +7,15 @@
     <?= css('assets/css/style.css') ?>
     <link rel="stylesheet" href="https://use.typekit.net/qhr3vpf.css">
   </head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-42360376-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-42360376-2');
+  </script>
   <body onkeypress="ESCclose(event)">
 
     <header>
