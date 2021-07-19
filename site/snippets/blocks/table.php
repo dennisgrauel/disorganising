@@ -7,7 +7,7 @@ if($rows->isNotEmpty()):
     <tr>
       <td><?= $row->timestamp() ?></td>
       <td><?= $row->voice() ?></td>
-      <td><?= $row->text() ?></td>
+      <td><?= $row->text()->kti() ?></td>
     </tr>
   <?php endforeach ?>
 </table>

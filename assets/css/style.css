@@ -645,6 +645,21 @@ td:last-child {
   width: 60%;
 }
 
+td > a {
+  text-decoration: underline;
+  font-style: inherit;
+}
+
+td a:hover,
+td a:focus {
+  font-style: italic;
+}
+
+td > strong {
+  font-family: 'Quadrant Text Mono', monospace;
+  font-weight: normal;
+}
+
 em {
   font-size: inherit;
   font-style: italic;
