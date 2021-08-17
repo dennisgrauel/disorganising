@@ -265,18 +265,38 @@ input:focus + .checkmark {
   flex-grow: 1;
   border-left: 1px solid black;
   padding-bottom: 4rem;
+  height: fit-content;
 }
 
 #about-pane h2 {
   margin-bottom: 1rem;
 }
 
-#about-text p+p {
+#about-text > p+p {
   text-indent: 4rem;
 }
 
 #about-pane a {
   display: inline;
+}
+
+#about-text h3 {
+  margin-top: 1rem;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-style: normal;
+}
+
+#team > h2 {
+  font-size: 1.3rem;
+  font-style: italic;
+  text-align: left;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+#team {
+  margin-bottom: 1rem;
 }
 
 a {

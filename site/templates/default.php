@@ -42,7 +42,16 @@
       <div id="about-text">
         <h2>ABOUT</h2>
         <?= $site->about()->toBlocks() ?>
+        <br>
+        <h2><em>DISORGANISING</em> TEAM</h2>
+        <div id="team">
+          <?= $site->team()->toBlocks() ?>
+        </div>
+        <div id="supporters">
+          <?= $site->supporters()->toBlocks() ?>
+        </div>
       </div>
+
       <div id="contributors">
         <h2>CONTRIBUTORS</h2>
         <?= $site->contributors()->toBlocks() ?>

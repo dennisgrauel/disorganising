@@ -18,6 +18,15 @@ columns:
             type: blocks
             fieldsets:
               - text
+          team:
+            type: blocks
+            fieldsets:
+              - text
+              - heading
+          supporters:
+            type: blocks
+            fieldsets:
+              - text
           contributors:
             type: blocks
             fieldsets:
