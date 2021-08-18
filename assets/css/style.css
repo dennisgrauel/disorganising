@@ -321,6 +321,10 @@ a.dinner:focus {
   outline: none;
 }
 
+p > a {
+  text-decoration: underline;
+}
+
 nav {
   overflow-x: hidden;
 }
