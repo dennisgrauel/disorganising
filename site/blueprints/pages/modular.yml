@@ -29,6 +29,8 @@ columns:
               - image
               - gallery
               - video
+              - audio
+              - map
               - markdown
           bio:
             type: blocks

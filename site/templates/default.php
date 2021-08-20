@@ -164,15 +164,6 @@
               <h4 class="subtitle"><?= $work->subtitle() ?></h4>
             <?php endif ?>
 
-            <?php if ($work->audio()->isNotEmpty()) : ?>
-              <?php $workaudio = $work->audio()->first() ?>
-              <audio controls>
-                <source src="<?= $workaudio->url() ?>" type="audio/<?= $workaudio->extension() ?>">
-                Your browser does not support the audio element.
-              </audio>
-            <?php endif ?>
-
-
             <?php $blocks  = $work->text()->toBlocks();
               $startAt = 1;
               $notes   = [];

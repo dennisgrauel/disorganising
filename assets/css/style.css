@@ -379,6 +379,10 @@ figure {
   overflow: hidden;
 }
 
+.figure-video {
+  padding: 0;
+}
+
 img {
   object-fit: contain;
   width: 100%;
@@ -711,11 +715,31 @@ hr::after {
   font-weight: normal;
 }
 
-/* AUDIO EMBEDDER */
+/* VIDEO EMBED */
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  width: 100%;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* AUDIO EMBED */
 
 audio {
-  margin: 3rem 0 3rem 0;
   width: 100%;
+}
+
+.audio-container {
+  margin: 3rem 0 3rem 0;
 }
 
 /* IMAGE GALLERY */
@@ -850,7 +874,7 @@ sup:focus {
 
 @media only screen and (min-width: 1600px) {
   .content {
-    padding: 1rem 6% 1rem 17%;
+    padding: 1rem 6% 12rem 17%;
   }
 }
 
