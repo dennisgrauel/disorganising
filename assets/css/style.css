@@ -693,6 +693,16 @@ em {
   font-style: italic;
 }
 
+/* BLACKOUT TEXT */
+
+s > u {
+  background: black;
+}
+
+s > u::selection {
+  color: black;
+}
+
 h5 {
   font-family: nimbus-sans-condensed, sans-serif;
   font-weight: 700;

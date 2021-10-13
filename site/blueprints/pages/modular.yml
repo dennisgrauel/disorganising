@@ -81,6 +81,9 @@ columns:
 
           ### Footnotes
           Include footnotes in text using square brackets and a caret symbol. eg: `[^Footnote text goes here]`
+
+          ### Blackout Text
+          Text set to both **striketrhough** and **underline** will be blacked out (but can still be copied and pasted).
       images:
         type: files
         layout: cards
