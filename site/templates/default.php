@@ -145,7 +145,7 @@
 
     <main>
 
-      <?php foreach ($site->children()->listed()->filterBy('intendedTemplate', 'modular') as $work) : ?>
+      <?php foreach ($site->children()->filterBy('intendedTemplate', 'modular') as $work) : ?>
 
         <div class="content-pane" id="<?= $work->slug() ?>" aria-hidden="true" data-slug="<?= $work->slug() ?>">
 
